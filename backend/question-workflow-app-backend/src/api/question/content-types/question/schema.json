@@ -25,6 +25,9 @@
       "required": true,
       "max": 5,
       "min": 2
+    },
+    "additionalText": {
+      "type": "string"
     }
   }
 }
