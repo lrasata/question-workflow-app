@@ -6,7 +6,7 @@ It allows admin users to define a collection of questions and possible answers o
 ## Installation and Setup Instructions
 Clone down this repository. You will need `node` and `npm` installed globally on your machine.
 
-### Backend build with Strapi
+### Backend built with Strapi
 
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
 
@@ -18,7 +18,7 @@ Start your Strapi application with autoReload enabled. [Learn more](https://docs
 npm run develop
 ```
 
-### Frontend build with React + Vite
+### Frontend built with React + Vite
 
 Installation:
 
