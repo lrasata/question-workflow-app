@@ -1,34 +1,28 @@
-# Question-workflow-app (work in progress)
-This is a full-stack project. The backend is built with **Strapi** and the frontend is built with **React + Vite**
+# Question workflow app
+This is a full-stack project. The backend is built with [Strapi](https://docs.strapi.io/) and the frontend is built with [React + Vite](https://vite.dev/guide/)
 
-It allows admin users to define a collection of questions and possible answers on the Strapi Admin panel. Then on the frontend a workflow of questions can be set so end-users are able to access them and select answers to questions.
+It allows admin users who have access to the Strapi Admin panel can define a collection of questions and possible answers. 
+Then on the frontend a workflow of questions is presented to the end-user who is able to select its answer.
 
-## Installation and Setup Instructions
-Clone down this repository. You will need `node` and `npm` installed globally on your machine.
 
 ### Backend built with Strapi
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+Strapi is a headless CMS. In this case, it is used to define the schema of a question :
 
-### `develop`
+![strapi-question-schema](./docs/strapi-question-schema.png)
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+And it allows admin users of teh Strapi admin panel to quickly provide data entries
 
-```
-npm run develop
-```
+![strapi-question-entry](./docs/strapi-question-entry.png)
+
+Data entries are then available for read on the following endpoint : `/api/questions`
 
 ### Frontend built with React + Vite
 
-Installation:
+The workflow of questions are displayed to the end-users which can interact with the UI to provide its answers.
 
-`npm install`
+This project is using React, Redux and Redux toolkit to demonstrate state management.
 
+![frontend-question](./docs/frontend-question.png)
+![frontend-answer-summary](./docs/frontend-answer-summary.png)
 
-To Start Server:
-
-`npm run dev`
-
-To Visit App:
-
-`http://localhost:5173/`
