@@ -1,5 +1,5 @@
 import {SetStateAction} from "react";
-import {StepProps} from "../components/HorizontalLinearStepper.tsx";
+import {StepProps} from "../components/HorizontalLinearStepperContainer.tsx";
 
 interface APIResponseType {
     questionId: string;

@@ -1,13 +1,10 @@
 import {Box, Typography, useMediaQuery, useTheme} from "@mui/material";
 import Button from "./Button.tsx";
-import {useDispatch} from "react-redux";
-import {answeredQuestionActions} from "../redux/AnsweredQuestions.ts";
-import {stepQuestionActions} from "../redux/StepQuestions.ts";
 
 export interface ButtonProps {
     text: string;
     ariaLabel: string;
-    onClick?: () => void;
+    onClick: (text: string) => void;
 }
 
 export interface QuestionProps {
@@ -17,21 +14,9 @@ export interface QuestionProps {
     buttons?: ButtonProps[];
 }
 
-const Question = ({id, title, description, buttons = []}: QuestionProps) => {
+const Question = ({title, description, buttons = []}: QuestionProps) => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-    const dispatch = useDispatch();
-
-    const handleClick = (optionValue: string) => {
-        dispatch(answeredQuestionActions.saveAnsweredQuestions(
-            {
-                questionId: id,
-                questionTitle: title,
-                selectedOption: optionValue
-            }
-        ));
-        dispatch(stepQuestionActions.incrementActiveStep())
-    }
 
     return <Box sx={{maxWidth: '800px', textAlign: "center"}}>
         <Box sx={{height: '100%', py: 3, px: 3}}>
@@ -50,7 +35,7 @@ const Question = ({id, title, description, buttons = []}: QuestionProps) => {
                             variant='outlined'
                             color='primary'
                             ariaLabel={button.ariaLabel}
-                            onClick={() => handleClick(button.text)}
+                            onClick={() => button.onClick(button.text)}
                             fullWidth={isMobile}
                             margin={1}>
                             {button.text}

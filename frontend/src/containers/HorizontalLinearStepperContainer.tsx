@@ -2,10 +2,10 @@ import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import Typography from '@mui/material/Typography';
-import {QuestionProps} from "./Question.tsx";
-import QuestionContainer from "../containers/QuestionContainer.tsx";
 import {StepLabel} from "@mui/material";
 import {useSelector} from "react-redux";
+import {QuestionProps} from "../components/Question.tsx";
+import QuestionContainer from "./QuestionContainer.tsx";
 
 export interface StepProps {
     question: QuestionProps;
@@ -26,7 +26,7 @@ interface AnswerProps {
 /***
  *  Inspired from : https://mui.com/material-ui/react-stepper/?srsltid=AfmBOopK1BrmO-uWfPkp7N2bobB42FxYr_H7baDFn-YGQ34Hgl6LBkJc#horizontal-stepper
  **/
-const HorizontalLinearStepper = ({steps}: props) => {
+const HorizontalLinearStepperContainer = ({steps}: props) => {
     // @ts-ignore
     const activeStepSelector = useSelector((state) => state.stepQuestions.activeStep);
     // @ts-ignore
@@ -77,4 +77,4 @@ const HorizontalLinearStepper = ({steps}: props) => {
     );
 }
 
-export default HorizontalLinearStepper;
+export default HorizontalLinearStepperContainer;
