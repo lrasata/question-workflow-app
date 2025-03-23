@@ -1,21 +1,37 @@
 import {Box, Stack, Typography, useMediaQuery, useTheme} from "@mui/material";
 import Button from "./Button.tsx";
+import {useDispatch} from "react-redux";
+import {answeredQuestionActions} from "../redux/AnsweredQuestions.ts";
+import {stepQuestionActions} from "../redux/StepQuestions.ts";
 
 export interface ButtonProps {
     text: string;
     ariaLabel: string;
+    onClick?: () => void;
 }
 
-export interface QuestionProps{
+export interface QuestionProps {
     id: string;
     title: string;
     description?: string;
     buttons?: ButtonProps[];
 }
 
-const Question = ({title, description, buttons = []}: QuestionProps) => {
+const Question = ({id, title, description, buttons = []}: QuestionProps) => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+    const dispatch = useDispatch();
+
+    const handleClick = (optionValue: string) => {
+        dispatch(answeredQuestionActions.saveAnsweredQuestions(
+            {
+                questionId: id,
+                questionTitle: title,
+                selectedOption: optionValue
+            }
+        ));
+        dispatch(stepQuestionActions.incrementActiveStep())
+    }
 
     return <Box sx={{maxWidth: 800}}>
         <Box sx={{height: '100%', py: 4, px: 4}}>
@@ -26,24 +42,22 @@ const Question = ({title, description, buttons = []}: QuestionProps) => {
                 {description}
             </Typography>
         </Box>
-            <Box sx={{ display: 'flex', alignItems: 'center',  margin: 'auto', px: 4, pb: 4 }} width={isMobile ? '100%' : undefined}>
-                <Stack spacing={2} direction={isMobile ? 'column' : 'row'} width='100%'>
-                    {
-                        buttons.map((button: ButtonProps, index) => (
-                            <Button
-                                variant='outlined'
-                                color='primary'
-                                ariaLabel={button.ariaLabel}
-                                onClick={() => {}}
-                                key={`${button.text}-${index}`}
-                                fullWidth={isMobile}>
-                                {button.text}
-                            </Button>
-                        ))
-                    }
-                </Stack>
-
-            </Box>
+        <Stack spacing={2} direction={isMobile ? 'column' : 'row'}
+               sx={{px: 4, pb: 4, justifyContent: 'center'}}>
+            {
+                buttons.map((button: ButtonProps, index) => (
+                    <Button
+                        variant='outlined'
+                        color='primary'
+                        ariaLabel={button.ariaLabel}
+                        onClick={() => handleClick(button.text)}
+                        key={`${button.text}-${index}`}
+                        fullWidth={isMobile}>
+                        {button.text}
+                    </Button>
+                ))
+            }
+        </Stack>
     </Box>
 }
 

@@ -6,9 +6,13 @@ const answeredQuestionsSlice = createSlice({
     name: 'answeredQuestions',
     initialState: initialAnsweredQuestionsState,
     reducers: {
-        addQuestions(state, action) {
+        saveAnsweredQuestions(state, action) {
             // @ts-ignore
-            state.answers = [...state.answers, action.payload];
+            state.answers = [...state.answers, {
+                questionId: action.payload.questionId,
+                questionTitle: action.payload.questionTitle,
+                selectedOption: action.payload.selectedOption
+            }];
         },
     },
 });

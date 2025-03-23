@@ -33,6 +33,10 @@
       "type": "integer",
       "unique": true,
       "required": true
+    },
+    "label": {
+      "type": "string",
+      "required": true
     }
   }
 }

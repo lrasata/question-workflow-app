@@ -6,6 +6,7 @@ interface APIResponseType {
     question: string;
     order: number;
     additionalText?: string;
+    label: string;
     options: {
         id: number;
         value: string;
@@ -19,6 +20,7 @@ const transformResponse = (response: APIResponseType[]): StepProps[] => {
                 id: response.questionId,
                 title: response.question,
                 description: response.additionalText,
+                label: response.label,
                 buttons: response.options.map((option) => {
                     return {
                         text: option.value,
@@ -26,7 +28,8 @@ const transformResponse = (response: APIResponseType[]): StepProps[] => {
                     }
                 })
             },
-            step: response.order
+            step: response.order,
+            stepLabel: response.label,
         }
     });
 }

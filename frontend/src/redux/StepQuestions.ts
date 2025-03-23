@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialStepQuestionsState = {stepQuestions: []};
+const initialStepQuestionsState = {stepQuestions: [], activeStep: 0};
 
 const stepQuestionsSlice = createSlice({
     name: 'stepQuestions',
@@ -10,6 +10,9 @@ const stepQuestionsSlice = createSlice({
             // @ts-ignore
             state.stepQuestions = action.payload;
         },
+        incrementActiveStep(state) {
+            state.activeStep += 1;
+        }
     },
 });
 
