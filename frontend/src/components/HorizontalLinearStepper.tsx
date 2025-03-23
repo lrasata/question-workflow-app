@@ -26,7 +26,7 @@ interface AnswerProps {
 /***
  *  Inspired from : https://mui.com/material-ui/react-stepper/?srsltid=AfmBOopK1BrmO-uWfPkp7N2bobB42FxYr_H7baDFn-YGQ34Hgl6LBkJc#horizontal-stepper
  **/
-const HorizontalLinearStepper = ( {steps} : props ) => {
+const HorizontalLinearStepper = ({steps}: props) => {
     // @ts-ignore
     const activeStepSelector = useSelector((state) => state.stepQuestions.activeStep);
     // @ts-ignore
@@ -46,18 +46,23 @@ const HorizontalLinearStepper = ( {steps} : props ) => {
             </Stepper>
             {activeStepSelector === steps.length ? (
                 <>
-                    <Typography sx={{mt: 2, mb: 1}}>
+                    <Typography variant='h5' sx={{mt: 4, mb: 4}}>
                         All steps completed
                     </Typography>
                     {
-                        answersSelector.length > 0 && <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
+                        answersSelector.length > 0 &&
+                        <Box sx={{display: 'flex', flexDirection: 'column'}}>
                             {
                                 answersSelector.map((answer: AnswerProps) => {
-                                    return <Box key={answer.questionId}>
-                                        <Typography variant="body1" gutterBottom>
-                                            {answer.questionTitle} {answer.selectedOption}
+                                    return <Box key={answer.questionId} mb={2}>
+                                        <Typography variant='subtitle2'>
+                                            {answer.questionTitle}
+                                        </Typography>
+                                        <Typography variant='body1'>
+                                            {answer.selectedOption}
                                         </Typography>
                                     </Box>
+
                                 })
                             }
                         </Box>

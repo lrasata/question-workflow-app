@@ -1,4 +1,4 @@
-import {Box, Stack, Typography, useMediaQuery, useTheme} from "@mui/material";
+import {Box, Typography, useMediaQuery, useTheme} from "@mui/material";
 import Button from "./Button.tsx";
 import {useDispatch} from "react-redux";
 import {answeredQuestionActions} from "../redux/AnsweredQuestions.ts";
@@ -33,8 +33,8 @@ const Question = ({id, title, description, buttons = []}: QuestionProps) => {
         dispatch(stepQuestionActions.incrementActiveStep())
     }
 
-    return <Box sx={{maxWidth: 800}}>
-        <Box sx={{height: '100%', py: 4, px: 4}}>
+    return <Box sx={{maxWidth: '800px', textAlign: "center"}}>
+        <Box sx={{height: '100%', py: 3, px: 3}}>
             <Typography variant="h5" component="div" gutterBottom={true}>
                 {title}
             </Typography>
@@ -42,22 +42,22 @@ const Question = ({id, title, description, buttons = []}: QuestionProps) => {
                 {description}
             </Typography>
         </Box>
-        <Stack spacing={2} direction={isMobile ? 'column' : 'row'}
-               sx={{px: 4, pb: 4, justifyContent: 'center'}}>
+        <Box flexDirection={isMobile ? 'column' : 'row'} sx={{px: 4, pb: 4}}>
             {
                 buttons.map((button: ButtonProps, index) => (
-                    <Button
-                        variant='outlined'
-                        color='primary'
-                        ariaLabel={button.ariaLabel}
-                        onClick={() => handleClick(button.text)}
-                        key={`${button.text}-${index}`}
-                        fullWidth={isMobile}>
-                        {button.text}
-                    </Button>
+                        <Button
+                            key={`${button.text}-${index}`}
+                            variant='outlined'
+                            color='primary'
+                            ariaLabel={button.ariaLabel}
+                            onClick={() => handleClick(button.text)}
+                            fullWidth={isMobile}
+                            margin={1}>
+                            {button.text}
+                        </Button>
                 ))
             }
-        </Stack>
+        </Box>
     </Box>
 }
 
