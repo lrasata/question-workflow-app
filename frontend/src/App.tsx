@@ -2,6 +2,7 @@ import './app.css'
 
 import {createTheme, ThemeProvider} from "@mui/material";
 import QuestionContainer from "./containers/QuestionContainer.tsx";
+import QuestionWorkflowContainer from "./containers/QuestionWorkflowContainer.tsx";
 
 const theme = createTheme({
     typography: {
@@ -25,6 +26,7 @@ const theme = createTheme({
 function App() {
     return <ThemeProvider theme={theme}>
         <QuestionContainer />
+        <QuestionWorkflowContainer />
     </ThemeProvider>;
 }
 

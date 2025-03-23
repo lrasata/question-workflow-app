@@ -2,17 +2,17 @@ export const questionWorkflowConfig = {
     steps: [
         {
             stepId: 1,
-            questionId: "id-questionA",
+            questionId: "id-question-a",
             entryPoint: true
         },
         {
             stepId: 2,
-            questionId: "id-questionB",
+            questionId: "id-question-b",
             entryPoint: false
         },
         {
             stepId: 3,
-            questionId: "id-questionC",
+            questionId: "id-question-c",
             entryPoint: false
         }
     ],

@@ -12,8 +12,9 @@ const QuestionContainer = () => {
     return <>
         {
             questions.map((question: QuestionProps, index) => (
-            <Question key={`${question.title}-${index}`} title={question.title} description={question.description} buttons={question.buttons} />
-        ))}
+                <Question key={`${question.title}-${index}`} title={question.title} description={question.description}
+                          buttons={question.buttons}/>
+            ))}
 
     </>
 }
