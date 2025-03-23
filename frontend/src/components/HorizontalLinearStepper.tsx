@@ -1,35 +1,40 @@
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {useState} from "react";
+import {QuestionProps} from "./Question.tsx";
+import QuestionContainer from "../containers/QuestionContainer.tsx";
+import {StepLabel} from "@mui/material";
 
-const steps = ['Select campaign settings', 'Create an ad group', 'Create an ad'];
+export interface StepProps {
+    question: QuestionProps;
+    step: number;
+}
+
+interface props {
+    steps: StepProps[];
+}
 
 /***
  *  Inspired from : https://mui.com/material-ui/react-stepper/?srsltid=AfmBOopK1BrmO-uWfPkp7N2bobB42FxYr_H7baDFn-YGQ34Hgl6LBkJc#horizontal-stepper
  **/
-const HorizontalLinearStepper = () => {
+const HorizontalLinearStepper = ( {steps} : props ) => {
     const [activeStep, setActiveStep] = useState(0);
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
     };
 
-    const handleReset = () => {
-        setActiveStep(0);
-    };
-
     return (
         <Box sx={{width: '100%'}}>
             <Stepper activeStep={activeStep}>
-                {steps.map((label) => {
+                {steps.map((step) => {
                     const stepProps: { completed?: boolean } = {};
                     return (
-                        <Step key={label} {...stepProps}>
-                            <StepLabel>{label}</StepLabel>
+                        <Step key={step.question.id} {...stepProps} >
+                            <StepLabel>{step.question.title}</StepLabel>
                         </Step>
                     );
                 })}
@@ -39,14 +44,11 @@ const HorizontalLinearStepper = () => {
                     <Typography sx={{mt: 2, mb: 1}}>
                         All steps completed - you&apos;re finished
                     </Typography>
-                    <Box sx={{display: 'flex', flexDirection: 'row', pt: 2}}>
-                        <Box sx={{flex: '1 1 auto'}}/>
-                        <Button onClick={handleReset}>Reset</Button>
-                    </Box>
                 </>
             ) : (
                 <>
-                    <Typography sx={{mt: 2, mb: 1}}>Step {activeStep + 1}</Typography>
+                    <QuestionContainer {...steps[activeStep].question} />
+
                     <Box sx={{display: 'flex', flexDirection: 'row', pt: 2}}>
                         <Box sx={{flex: '1 1 auto'}} />
                         <Button onClick={handleNext}>

@@ -400,6 +400,9 @@ export interface ApiQuestionQuestion extends Struct.CollectionTypeSchema {
         },
         number
       >;
+    order: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     publishedAt: Schema.Attribute.DateTime;
     question: Schema.Attribute.String & Schema.Attribute.Required;
     questionId: Schema.Attribute.UID;

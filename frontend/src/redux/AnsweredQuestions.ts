@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialAnsweredQuestionsState = {questions: []};
+const initialAnsweredQuestionsState = {answers: []};
 
 const answeredQuestionsSlice = createSlice({
     name: 'answeredQuestions',
@@ -8,7 +8,7 @@ const answeredQuestionsSlice = createSlice({
     reducers: {
         addQuestions(state, action) {
             // @ts-ignore
-            state.questions = [...state.questions, action.payload];
+            state.answers = [...state.answers, action.payload];
         },
     },
 });
