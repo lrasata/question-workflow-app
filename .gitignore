@@ -8,8 +8,8 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-backend/question-workflow-app-backend/node_modules
-frontend/question-workflow-app-frontend/node_modules
+backend/node_modules
+frontend/node_modules
 dist
 dist-ssr
 *.local

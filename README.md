@@ -1,7 +1,7 @@
 # Question-workflow-app (work in progress)
 This is a full-stack project. The backend is built with **Strapi** and the frontend is built with **React + Vite**
 
-It allows admin users to define a collection of questions and possible answers on the Strapi Admin panel. Then on the frontend a workflow of questions can be set so the end-users is able to access them and select an option.
+It allows admin users to define a collection of questions and possible answers on the Strapi Admin panel. Then on the frontend a workflow of questions can be set so end-users are able to access them and select answers to questions.
 
 ## Installation and Setup Instructions
 Clone down this repository. You will need `node` and `npm` installed globally on your machine.
