@@ -4,7 +4,7 @@ import Button from "./Button.tsx";
 export interface ButtonProps {
     text: string;
     ariaLabel: string;
-    onClick: (text: string) => void;
+    onClick?: (text: string) => void;
 }
 
 export interface QuestionProps {
@@ -35,7 +35,7 @@ const Question = ({title, description, buttons = []}: QuestionProps) => {
                             variant='outlined'
                             color='primary'
                             ariaLabel={button.ariaLabel}
-                            onClick={() => button.onClick(button.text)}
+                            onClick={() => button.onClick && button.onClick(button.text)}
                             fullWidth={isMobile}
                             margin={1}>
                             {button.text}

@@ -1,5 +1,5 @@
 import {SetStateAction} from "react";
-import {StepProps} from "../components/HorizontalLinearStepperContainer.tsx";
+import {StepProps} from "../containers/HorizontalLinearStepperContainer.tsx";
 
 interface APIResponseType {
     questionId: string;
@@ -13,7 +13,7 @@ interface APIResponseType {
     }[]
 }
 
-const transformResponse = (response: APIResponseType[]): StepProps[] => {
+export const transformResponse = (response: APIResponseType[]): StepProps[] => {
     return response.map((response: APIResponseType) => {
         return {
             question: {
