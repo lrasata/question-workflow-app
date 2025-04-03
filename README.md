@@ -41,3 +41,8 @@ To Start Server:
 To Visit App:
 
 `http://localhost:5173/`
+
+### `deploy`
+
+For testing purposes, this project was successfully deployed on AWS following this [step by step guide](https://vanu-verma.medium.com/publish-a-vitejs-react-web-app-to-production-using-ec2-and-apache2-ec86a61c5e17).
+The project was deployed on `AWS EC2 instance` and was able to reach the backend deployed on another EC2 instance to fetch data.
