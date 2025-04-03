@@ -1,17 +1,11 @@
-import {Button as MuiButton} from "@mui/material";
-import * as React from "react";
+import {Button as MuiButton, ButtonProps} from "@mui/material";
 
-interface props {
-    variant?: string;
-    fullWidth?: boolean;
-    color?: string;
-    onClick?: () => void;
-    children?: React.ReactNode;
+interface CustomProps {
     ariaLabel?: string;
     margin?: number;
 }
-
-const Button = ({variant='contained', fullWidth=false, color='primary', onClick, ariaLabel, children, margin} : props) => {
+const Button = (props: ButtonProps & CustomProps) => {
+    const { variant, onClick, color, children, ariaLabel, fullWidth, margin} = props
     return <MuiButton
         variant={variant}
         fullWidth={fullWidth}

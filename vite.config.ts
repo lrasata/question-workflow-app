@@ -9,11 +9,11 @@ export default defineConfig({
   plugins: [react()],
 
   // <add this part>
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: './src/test/setup.ts',
-    css: true,
-  },
+  // test: {
+  //   globals: true,
+  //   environment: 'jsdom',
+  //   setupFiles: './src/test/setup.ts',
+  //   css: true,
+  // },
 })
 
