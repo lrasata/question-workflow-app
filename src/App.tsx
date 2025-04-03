@@ -1,4 +1,4 @@
-import './app.css'
+import './App.css'
 
 import {createTheme, ThemeProvider} from "@mui/material";
 import QuestionWorkflowContainer from "./containers/QuestionWorkflowContainer.tsx";
